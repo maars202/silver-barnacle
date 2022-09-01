@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import image from '../../../public/images/metacamp-logo.png';
+// import image from '../../../public/images/metacamp-logo.png';
 import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = () => {

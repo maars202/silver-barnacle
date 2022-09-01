@@ -16,13 +16,13 @@ const Main = ({ childComp }: MainProp) => {
                         <div className="flex flex-col pt-6 px-6">{childComp}</div>
                     </main>
                 </div>
-                <p className="text-center text-sm text-gray-400 my-10">
+                {/* <p className="text-center text-sm text-gray-400 my-10">
                     &copy; 2022{' '}
                     <a href="https://openhaus.community" className="hover:underline">
                         Metacamp
                     </a>
                     . All rights reserved.
-                </p>
+                </p> */}
             </div>
         </div>
     );
