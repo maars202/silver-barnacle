@@ -89,8 +89,21 @@ const NavBar = () => {
 
                         {links.map((item, idx) => {
                             const { title, link} = item
-                            return (<a href={link} className=" text-xl font-bold flex items-center lg:ml-2.5 hover:underline hover:scale-110 underline-offset-4 decoration-sky-500 text-white">
-                                {title}</a>)
+                            return (
+                            
+                            // <a href={link} className=" text-xl font-bold flex items-center lg:ml-2.5 hover:underline hover:scale-110 underline-offset-4 decoration-sky-500 text-white">
+                            //     {title}</a>
+
+                            <Link
+                                        to={link}
+                                        onClick={() => setIsNavOpen(false)}
+                                        // className={`text-base font-normal rounded-lg flex items-center p-2 hover:text-gray-900 hover:bg-gray-100 group ${
+                                        //     location.pathname == '/wallet' ? 'text-sky-400' : 'text-gray-300'
+                                        // }`}
+                                        className=" text-xl font-bold flex items-center lg:ml-2.5 hover:underline hover:scale-110 underline-offset-4 decoration-sky-500 text-white"
+                                    ><p>{title}</p></Link>
+                                
+                                )
                         })}
 
 
