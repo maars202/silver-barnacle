@@ -20,7 +20,7 @@ export const App: FC = () => {
                         <Routes>
                              <Route path="/wallet2" element={<ManageNFTs2 />} />
                             <Route path="/wallet" element={<ManageNFTs />} />
-                            <Route path="/" element={<Home />} />
+                            <Route path="/" element={<Elections />} />
                             <Route path="/elections" element={<Elections />} />
                             <Route path="/vote" element={<Votingpage />} />
                         </Routes>
