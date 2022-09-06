@@ -13,10 +13,21 @@ For a deeper breakdown of our solution, please refer to our pitch deck!
 
 This is the extended development for the frontend of the Solmate project done as part of the Solana Summer Camp Hackathon. The Solmate project can be found at [[Solmate Github]](https://github.com/maars202/solmate)
 
+This site has been deployed at https://silver-barnacle-theta.vercel.app/.
+
 <p align='center'>
 <img src="public/images/gif1.gif" width="400" height="250"/>
 </p>
 
 <p align='center'>
-<img src="imgs/gif2.png" width="500" height="350"/>
+<img src="public/images/gif2.gif" width="400" height="250"/>
+</p>
+
+
+<p align='center'>
+<img src="public/images/gif3.gif" width="400" height="250"/>
+</p>
+
+<p align='center'>
+<img src="public/images/gif4.gif" width="400" height="250"/>
 </p>
