@@ -73,7 +73,7 @@ const CardNFT = ({ nft, wallet, setStates, isListed }: cardNFTInterface) => {
                 </div>
             )}
             <div className="px-3 py-5 text-gray-200 text-center">
-
+<div>{nft.name}</div>
 
           
   {!isListed ? 
