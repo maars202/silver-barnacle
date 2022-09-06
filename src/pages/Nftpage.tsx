@@ -36,8 +36,9 @@ interface cardNFTInterface {
 
 
 const CardNFT = ({ nft, wallet, setStates, isListed }: cardNFTInterface) => {
+  
   const { imageUrl, name } = nft;
-  console.log("imageUrl: ", imageUrl, " name: ", name);
+  console.log("nfttt: ", nft, " name: ", name);
   const [imgLoading, setImgLoading] = useState<boolean>(true);
 
   return (
@@ -134,7 +135,9 @@ data.append('network', 'devnet');
 data.append('private_key', '3eJHxayX14X6dj9kbkAcC7hWwMFKbZEZUFYeXqz67G6wi5uWMAvyUddTodtRfkpgHQ2W46ZNX5w7PwBkY4MHXd3x');
 
 // const url = 'https://cdn.shopify.com/s/files/1/0234/8017/2591/products/young-man-in-bright-fashion_925x_f7029e2b-80f0-4a40-a87b-834b9a283c39.jpg?v=1572867553'
-const url = "https://bafkreicxnh7myglvvbe5qriqgelfybrcsneujg7qgknguazbuwvupup3pi.ipfs.nftstorage.link/"
+// const bulbasaur url = "https://bafkreicxnh7myglvvbe5qriqgelfybrcsneujg7qgknguazbuwvupup3pi.ipfs.nftstorage.link/"
+// const secondshoeurl = "https://bafkreibb2dhgj654ztgsfc6qwwk2oyknwuoz3wm4o4qp6qlnt6dkrcug3u.ipfs.nftstorage.link/"
+const url = "https://bafkreidwcpfttpotjwngx53f2rq5um2jtmua24udkq77pgeztgdqress44.ipfs.nftstorage.link/"
 const fileName = 'myFile.jpg'
 let file = undefined;
 await fetch(url)
@@ -193,9 +196,9 @@ await axios(config)
             console.log("1 passed")
             setTimeout(r, ms)});
 
-          // setShowModal(true)
-          // await sleep(5000);
-          // setShowModal(false)
+          setShowModal(true)
+          await sleep(5000);
+          setShowModal(false)
           setShowModal2(true)
           console.log("2 passed")
           
@@ -315,11 +318,62 @@ await axios(config)
   );
 }
 
-const Nftpage = (props: Props) => {
 
+// {
+//   "name": "OJ",
+//   "symbol": "OJ",
+//   "royalty": 10,
+//   "image_uri": "https://nftstorage.link/ipfs/bafkreidmeseghzggjo7uy7b7l6ij62xrbqr6glclsu3yearrxbismq575e",
+//   "cached_image_uri": "https://cdn.shyft.to/img/https%253A%252F%252Fnftstorage.link%252Fipfs%252Fbafkreidmeseghzggjo7uy7b7l6ij62xrbqr6glclsu3yearrxbismq575e.png",
+//   "metadata_uri": "https://nftstorage.link/ipfs/bafkreidpiudmvkku42soz7lakge5kz5cvp5nypbtzsv43qv7wapj4r2lg4",
+//   "description": "OJ",
+//   "mint": "DjMM6Wyoi5kgRYXG9rYvTDCZXDdmmKtYBqdCad4VHAiG",
+//   "owner": "9GBTns7DZSZzXYAfxgmXxqCZZgTQCvF6uKbvzohF2Xbx",
+//   "creators": [{
+//     "address": "9GBTns7DZSZzXYAfxgmXxqCZZgTQCvF6uKbvzohF2Xbx",
+//     "share": 100,
+//     "verified": 1
+//   }],
+//   "attributes": {
+//     "speed": 100,
+//     "aggression": "crazy",
+//     "energy": "very high"
+//   },
+//   "attributes_array": [{
+//     "trait_type": "speed",
+//     "value": 100
+//   }, {
+//     "trait_type": "aggression",
+//     "value": "crazy"
+//   }, {
+//     "trait_type": "energy",
+//     "value": "very high"
+//   }],
+//   "files": [],
+//   "update_authority": "9GBTns7DZSZzXYAfxgmXxqCZZgTQCvF6uKbvzohF2Xbx"
+// }
+
+
+
+interface nftinterface {
+  name: string,
+  symbol: string,
+  royalty: string,
+  image_uri: string,
+  description: string,
+  mint: string,
+  owner: string,
+  attributes: {}
+}
+
+const Nftpage = (props: Props) => {
+  const wallet = useAnchorWallet();
+  console.log("walletttt: ", wallet?.publicKey.toBase58())
   // const { activeMenu, setActiveMenu, theme, setTheme } = useStateContext();
   const { saveTodo, todos, setnft, currNFT } = React.useContext(TodoContext) as TodoContextType;
   const [formData, setFormData] = React.useState<ITodo | {}>();
+  const [fullCurrNft, setFullCurrNft] = React.useState<nftinterface | undefined>();
+  
   // let displayNFT = NFT({"sellerKey":"ErcPkkza1vaumtDKho6VddVvrLnwWA6yKqMuEYLE4JSZ",
   // "mintPubKey":"29GBRuuwkdxzJuvrsW2x1UaSPpHqAXNzQdd4u97fpSA8",
   // "tokenPubKey":"5CmeYs5TrRTzuuLSr1C1wpQTzPk62TmCcvYwE9FbaRRX",
@@ -333,11 +387,50 @@ const Nftpage = (props: Props) => {
   // }
 
 
+
+
   useEffect(() => {
     // let { slug } = useParams();
     console.log("props:", props)
     console.log("todos:", todos)
     console.log("currNFT: ", JSON.stringify(currNFT))
+    console.log("currNFT?.tokenPubKey.toBase58(): ", currNFT?.mintPubKey)
+    const getNftFullData = async (tokenAddress: string | undefined) => {
+      console.log("tokenAddress: ", tokenAddress)
+      if (!tokenAddress) {
+        return
+      }
+      const dummy = "ChpHD1w6ocV1xtvoQKJgjazGZc9FqU7Z9vVpPMx5Lrjq"
+  var config = {
+    method: 'get',
+    url: 'https://api.shyft.to/sol/v1/nft/read?network=devnet&token_address=' + tokenAddress,
+    headers: { 
+      'x-api-key': '-3iYNcRok7Gm4EMl'
+    }
+  };
+  
+  await axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+    setFullCurrNft({name: response.data.result.name,
+      symbol: response.data.result.symbol,
+      royalty: response.data.result.royalty,
+      image_uri: response.data.result.image_uri,
+      description: response.data.result.description,
+      mint: response.data.result.mint,
+      owner: response.data.result.owner,
+      attributes: response.data.result.attributes,
+      })
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  
+    }
+
+
+    getNftFullData(currNFT?.mintPubKey.toString());
+    
   }, [])
   
 
@@ -350,9 +443,17 @@ const Nftpage = (props: Props) => {
   return (
     <div className='flex flex-col mx-20 mt-20'>
 
-        {/* <div className='bg-[#2c2c39] rounded-lg m-2 mt-5 justify-items-center grid'>
-          Home/Explore
-        </div> */}
+
+        {/* <div>{fullCurrNft?.name}</div>
+        <div>{fullCurrNft?.symbol}</div>
+        <div>{fullCurrNft?.royalty}</div>
+        <div>{fullCurrNft?.image_uri}</div>
+        <div>{fullCurrNft?.description}</div>
+        <div>{fullCurrNft?.mint}</div>
+        <div>{fullCurrNft?.owner}</div>
+        <div>{JSON.stringify(fullCurrNft?.attributes)}</div>
+         */}
+
 
         <div className='flex flex-col md:flex-row'>
       <div className='w-full md:w-3/5 justify-items-center align-middle'>
@@ -364,21 +465,33 @@ const Nftpage = (props: Props) => {
      
      <div className='w-full md:w-2/5'>
 
-      <div className='text-white text-3xl font-bold'>{currNFT == null ? "Not Available" : currNFT.name}</div>
+      <div className='text-white text-3xl font-bold'>{fullCurrNft == undefined ? "Not Available" : fullCurrNft.name}</div>
 
-      <div className='text-[#a1a0ae] text-lg font-bold my-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales mi felis, pretium tincidunt lorem varius ac. Curabitur mauris lacus, pretium vel neque nec, blandit pharetra nulla.</div>
+      <div className='text-[#a1a0ae] text-lg font-bold my-2'>{fullCurrNft?.description}</div>
       
       
      <div className='bg-[#2c2c39] w-4/5 rounded-lg mt-5 justify-items-start grid p-3'>
-        <div className='text-[#a1a0ae] text-xl font-bold'>Seller : <span className='text-white text-lg font-bold'>{(currNFT?.sellerKey.toBase58().substring(0, 10) + "....")}</span></div>
-        <div className='text-[#a1a0ae] text-xl font-bold'>Size : <span className='text-white text-lg font-bold'>{(currNFT?.tokenPubKey.toBase58().substring(0, 10) + "....")}</span></div>
-        <div className='text-[#a1a0ae] text-xl font-bold'>Prize : <span className='text-white text-xl font-bold'>{currNFT?.price}</span></div>
+        <div className='text-[#a1a0ae] text-xl font-bold'>Owner : <span className='text-white text-lg font-bold'>{(fullCurrNft?.owner.substring(0, 10) + "....")}</span></div>
+        <div className='text-[#a1a0ae] text-xl font-bold'>Mint : <span className='text-white text-lg font-bold'>{(fullCurrNft?.mint.substring(0, 10) + "....")}</span></div>
+        <div className='text-[#a1a0ae] text-xl font-bold'>Symbol : <span className='text-white text-lg font-bold'>{fullCurrNft?.symbol}</span></div>
+        <div className='text-[#a1a0ae] text-xl font-bold'>Royalty : <span className='text-white text-xl font-bold'>{fullCurrNft?.royalty}</span></div>
+        <h3>Attributes:</h3>
+        {fullCurrNft != undefined ?
+          Object.entries(fullCurrNft?.attributes).map((item) => {
+            console.log(item[1])
+            
+            return <div className='text-[#a1a0ae] text-xl font-bold'>{item[0]} : <span className='text-white text-xl font-bold'>{item[1]}</span></div>
+            // <div>{item[0]}</div>
+          }) : "null"
+        }
     </div>
 
     {/* <button type="button" class="my-10 w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Redeem</button> */}
 
-
-    <Modal sellerKey={currNFT?.sellerKey}/>
+{
+  wallet?.publicKey.toBase58() == fullCurrNft?.owner ? <Modal sellerKey={currNFT?.sellerKey}/> : ""
+}
+    
 
 
      </div>

@@ -124,14 +124,14 @@ const ManageNFTs = () => {
 
     return (
         <div>
-            <WalletOverview
+            {/* <WalletOverview className="invisible"
                 walletPubKey={wallet?.publicKey}
                 listedNFTs={listedNFTsAmount}
                 unlistedNFTs={unlistedNFTsAmount}
-            />
-            <div>helloo</div>
+            /> */}
+
             
-            <div className="mb-4 flex flex-row space-x-2 text-sm">
+            <div className="mb-4 flex flex-row space-x-2 text-sm invisible">
                 <div
                     onClick={() => setShowListed(false)}
                     className={`rounded-lg px-2 py-1 w-max border ${

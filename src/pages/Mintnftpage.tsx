@@ -1,4 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react'
+
 import axios from 'axios'
 type Props = {}
 
@@ -11,6 +12,7 @@ const Mintnftpage = (props: Props) => {
   const [desc, setDesc] = useState<string>()
   const [attr, setAttr] = useState<String>()
   const [royalty, setRoyalty] = useState<String>()
+  const [isTxLoading, setIsTxLoading] = useState<Boolean>(false)
 
   type data = {
     name: string;
@@ -79,14 +81,15 @@ await axios(config)
 
 
 
-  const displayFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-
+  const displayFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsTxLoading(true)
    
     if (selectedFile){
       console.log("display: ", selectedFile);
     }
-    mintNow2()
-
+    
+    await mintNow2()
+    setIsTxLoading(false)
   }
 
   useEffect(() => {
@@ -211,9 +214,32 @@ await axios(config)
 
 
 <div className=' grid justify-items-center'>
-<button onClick={displayFile} class="w-1/4 relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-3xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
-  <span class="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-      Mint NFT!
+<button onClick={displayFile} class="h-16 w-1/4 relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-3xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+  <span class="h-full w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 grid justify-items-center">
+  {isTxLoading ? (
+                    <svg
+                        className="animate-spin h-5 w-5 mt-2"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <circle
+                            className="opacity-25 "
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="5"
+                        ></circle>
+                        <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                    </svg>
+                ) : (
+                    'MINT NFT!'
+                )}
   </span>
 </button>
 </div>
