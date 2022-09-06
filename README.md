@@ -3,7 +3,7 @@
 
 
 <p align='center'>
-<img src="public/images/gif1.png" width="500" height="350"/>
+<img src="public/images/gif1.gif" width="500" height="350"/>
 </p>
 
 <p align='center'>
