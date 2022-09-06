@@ -8,8 +8,9 @@ const NavBar = () => {
     const location = useLocation();
 
     const links = [{"title": "Personal Info", "link": "/elections"},
-    {"title": "Elections", "link": "/elections"},
-    {"title": "Contact", "link": "/mint"},
+    // {"title": "Elections", "link": "/elections"},
+    {"title": "My NFTs", "link": "/mynfts"},
+    {"title": "Mint", "link": "/mintnft"},
     {"title": "Vote", "link": "/vote"}]
 
 

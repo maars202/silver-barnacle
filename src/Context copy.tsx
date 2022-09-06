@@ -10,7 +10,7 @@ import {
     TorusWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
-import React, { FC, ReactNode, useMemo, createContext, useContext, useState } from 'react';
+import React, { FC, ReactNode, useMemo } from 'react';
 
 const Context: FC<{ children: ReactNode }> = ({ children }) => {
   // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
@@ -39,9 +39,6 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
       [network]
   );
 
-
-
-
   return (
       <ConnectionProvider endpoint={endpoint}>
           <WalletProvider wallets={wallets} autoConnect>
@@ -52,4 +49,3 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 export default Context;
-

@@ -30,7 +30,7 @@ const ManageNFTs = () => {
         const availTokenAccountsInfo = await filterAvailAccount(tokenAccountsInfo.value);
         setUnlistedNFTsAmount(availTokenAccountsInfo.length);
 
-        console.log("availTokenAccountsInfo: ", availTokenAccountsInfo);
+        // console.log("availTokenAccountsInfo: ", availTokenAccountsInfo);
 
         const availMintsPubKey = availTokenAccountsInfo.map(
             (tokenAccountInfo) => tokenAccountInfo.account.data.parsed.info.mint as PublicKey
@@ -49,9 +49,13 @@ const ManageNFTs = () => {
             })
         );
 
-        const availMintsMetadata = await getMintsMetadata(availMintsPubKey);
+        
 
-        console.log("availMintsMetadata: ", availMintsMetadata)
+        const availMintsMetadata = await getMintsMetadata(availMintsPubKey);
+        // console.log("!!!!!availTokenAccountsInfo: ", availTokenAccountsInfo)
+        console.log("!!!!!availMintsMetadata: ", availMintsMetadata)
+
+        // console.log("availMintsMetadata: ", availMintsMetadata)
         setUnlistedCardsNftInfo(
             availTokenAccountsInfo.map((tokenAccountInfo, index) => {
                 return {
@@ -88,8 +92,11 @@ const ManageNFTs = () => {
             listingProofAccounts.map((tokenAccountInfo) => tokenAccountInfo.account.nftMint)
         );
 
+       
+
         setListedCardsNftInfo(
             listingProofAccounts.map((tokenAccountInfo, index) => {
+
                 return {
                     sellerKey: tokenAccountInfo.account.sellerKey,
                     mintPubKey: tokenAccountInfo.account.nftMint,

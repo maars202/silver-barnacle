@@ -1,4 +1,4 @@
-// import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PublicKey } from '@solana/web3.js';
 import { AnchorWallet, useAnchorWallet } from '@solana/wallet-adapter-react';
 import _ from 'lodash';
@@ -6,7 +6,6 @@ import { conn, initEscrowMarketplaceClient } from '../../client/common';
 import CreateListing from '../manageNFTs/createListing';
 import CancelListing from '../manageNFTs/cancelListing';
 import PurchaseListing from '../home/purchaseListing';
-import { Link, useLocation } from 'react-router-dom';
 
 export interface NFTInterface {
     sellerKey: PublicKey;
@@ -24,26 +23,10 @@ interface cardNFTInterface {
     isListed: boolean;
 }
 
-import React, { createContext, useContext, useState, FC, ReactNode, useEffect} from "react";
-// import React, { FC, ReactNode, useMemo } from 'react';
-import { TodoContextType, ITodo, NFT } from '../../@types/todo.d';
-import { TodoContext } from '../../ContextProvider';
-
 const CardNFT = ({ nft, wallet, setStates, isListed }: cardNFTInterface) => {
-    const { saveTodo, todos, setnft, currNFT } = React.useContext(TodoContext) as TodoContextType;
-    const [formData, setFormData] = React.useState<ITodo | {}>();
-    // console.log("card: ", nft)
-
     const { imageUrl, name } = nft;
+    console.log("imageUrl: ", imageUrl, " name: ", name);
     const [imgLoading, setImgLoading] = useState<boolean>(true);
-    const go = () => {
-        // console.log("buy thisss")
-    }
-
-    useEffect(() => {
-
-    }, [])
-    
 
     return (
         <div className="shadow-xl bg-slate-800 rounded-lg col-span-12 lg:col-span-3 flex flex-col">
@@ -72,15 +55,21 @@ const CardNFT = ({ nft, wallet, setStates, isListed }: cardNFTInterface) => {
                     </div>
                 </div>
             )}
-            <div className="px-3 py-5 text-gray-200 text-center">
-            <button onClick={go} class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-  {!isListed ? <Link onClick={() => {setnft(nft)}} to="/nftpage" params={{ testvalue: "hello" }}>View Details</Link> : "Buy"}
-  </span>
-</button>
-
+            <div className="px-3 py-5 text-gray-200">
+                {(name === 'loading' || name === '') ? <div className="w-1/2 py-3 bg-slate-600 rounded animate-pulse"></div> : name}
+                {name === 'loading' && <div className="w-full mt-3 py-4 bg-slate-600 rounded animate-pulse"></div>}
+                {name != 'loading' &&
+                    (isListed ? (
+                        wallet?.publicKey.equals(nft.sellerKey) ? (
+                            <CancelListing nft={nft} wallet={wallet} setOverallStates={setStates} />
+                        ) : (
+                            <PurchaseListing nft={nft} wallet={wallet} setAllListedStates={setStates} />
+                        )
+                    ) : (
+                        <CreateListing nft={nft} wallet={wallet} setOverallStates={setStates} />
+                    ))}
             </div>
-            
+            <div>Hello</div>
         </div>
     );
 };

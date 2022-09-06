@@ -58,7 +58,12 @@ async function getMintMetadata(mintPubkey: PublicKey) {
 
 export async function getMintsMetadata(mintsList: PublicKey[]) {
   const metadataList: MetadataInterface[] = await Promise.all(
-    mintsList.map((mintPubKey) => getMintMetadata(mintPubKey))
+    mintsList.map(async (mintPubKey) => {
+      
+      let result = await getMintMetadata(mintPubKey);
+      console.log("getMintsMetadata:", result)
+      return getMintMetadata(mintPubKey)
+    })
   )
 
   return metadataList
