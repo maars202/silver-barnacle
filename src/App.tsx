@@ -28,12 +28,13 @@ export const App: FC = () => {
                 <Main
                     childComp={
                         <Routes>
-                             <Route path="/marketplace" element={<Home />} />
+                             <Route path="/" element={<Home />} />
                              <Route path="/mynfts" element={<ManageNFTs2 />} />
                             <Route path="/wallet" element={<ManageNFTs />} >
                                 {/* <Route name="ideas" path="/:testvalue" handler={Nftpage} /> */}
                             </Route>
-                            <Route path="/" element={<Elections />} />
+
+                            {/* <Route path="/" element={<Elections />} /> */}
                             <Route path="/elections" element={<Elections />} />
                             <Route path="/vote" element={<Votingpage />} />
                             <Route path="/mintnft" element={<Mintnftpage />} />

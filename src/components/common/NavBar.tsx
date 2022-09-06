@@ -7,11 +7,14 @@ const NavBar = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const location = useLocation();
 
-    const links = [{"title": "Personal Info", "link": "/elections"},
+    const links = [
+        // {"title": "Personal Info", "link": "/elections"},
+        {"title": "Marketplace", "link": "/"},
     // {"title": "Elections", "link": "/elections"},
     {"title": "My NFTs", "link": "/mynfts"},
     {"title": "Mint", "link": "/mintnft"},
-    {"title": "Vote", "link": "/vote"}]
+    // {"title": "Vote", "link": "/vote"}
+]
 
 
     return (
@@ -82,25 +85,16 @@ const NavBar = () => {
                                 </li>
                             </ul>
                         </div>
-                        {/* <a href="/" className="text-xl font-bold flex items-center lg:ml-2.5">
-                            <img src={image} className="h-7 md:h-8 mr-2" alt="metacamp Logo" />
-                        </a> */}
 
-                        <div className=' flex flex-row justify-between w-full md:visible invisible'>
+
+                        <div className=' flex flex-row justify-between w-full md:visible invisible ml-20'>
 
                         {links.map((item, idx) => {
                             const { title, link} = item
                             return (
-                            
-                            // <a href={link} className=" text-xl font-bold flex items-center lg:ml-2.5 hover:underline hover:scale-110 underline-offset-4 decoration-sky-500 text-white">
-                            //     {title}</a>
-
                             <Link
                                         to={link}
                                         onClick={() => setIsNavOpen(false)}
-                                        // className={`text-base font-normal rounded-lg flex items-center p-2 hover:text-gray-900 hover:bg-gray-100 group ${
-                                        //     location.pathname == '/wallet' ? 'text-sky-400' : 'text-gray-300'
-                                        // }`}
                                         className=" text-xl font-bold flex items-center lg:ml-2.5 hover:underline hover:scale-110 underline-offset-4 decoration-sky-500 text-white"
                                     ><p>{title}</p></Link>
                                 

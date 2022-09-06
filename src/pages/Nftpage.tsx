@@ -133,7 +133,8 @@ var data = new FormData();
 data.append('network', 'devnet');
 data.append('private_key', '3eJHxayX14X6dj9kbkAcC7hWwMFKbZEZUFYeXqz67G6wi5uWMAvyUddTodtRfkpgHQ2W46ZNX5w7PwBkY4MHXd3x');
 
-const url = 'https://cdn.shopify.com/s/files/1/0234/8017/2591/products/young-man-in-bright-fashion_925x_f7029e2b-80f0-4a40-a87b-834b9a283c39.jpg?v=1572867553'
+// const url = 'https://cdn.shopify.com/s/files/1/0234/8017/2591/products/young-man-in-bright-fashion_925x_f7029e2b-80f0-4a40-a87b-834b9a283c39.jpg?v=1572867553'
+const url = "https://bafkreicxnh7myglvvbe5qriqgelfybrcsneujg7qgknguazbuwvupup3pi.ipfs.nftstorage.link/"
 const fileName = 'myFile.jpg'
 let file = undefined;
 await fetch(url)
@@ -198,7 +199,7 @@ await axios(config)
           setShowModal2(true)
           console.log("2 passed")
           
-          await sleep(5000);
+          // await sleep(5000);
           
           console.log("simulating getting approval from organisor and upgrading nft")
           console.log("currNFT?.mintPubKey.toBase58() 1: ", currNFT?.mintPubKey)

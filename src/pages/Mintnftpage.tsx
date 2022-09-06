@@ -22,33 +22,14 @@ const Mintnftpage = (props: Props) => {
 
   const mintNow2 = async () => {
 
-    if (!selectedFile || !name){
+    if (!selectedFile || !name || !symbol || !desc || !attr || !royalty){
       console.log("name", name)
+      console.log("symbol", symbol)
+      console.log("desc", desc)
+      console.log("attr", attr)
+      console.log("royalty", royalty)
       return
     }
-
-
-    // if (!selectedFile || !name || !symbol || !desc || !attr || !royalty){
-
-    //   console.log("invalid data set")
-    //   console.log("name: ", name)
-    //   console.log("symbol: ", symbol)
-    //   console.log("desc: ", desc)
-    //   console.log("attr: ", attr)
-    //   console.log("royalty: ", royalty)
-
-    //   return
-    // }
-
-//     var axios = require('axios');
-// var FormData = require('form-data');
-// var fs = require('fs');
-
-// const name = "Maarss";
-
-// const symbol = "MAARSS";
-// const desc = "Maars second nft";
-// const attr = '[{"trait_type": "speed", "value": 100},\n{"trait_type": "aggression", "value": "crazy"},\n{"trait_type": "energy", "value": "very high"}]';
 
 const extUrl = 'https://shyft.to/';
 
@@ -58,18 +39,20 @@ data.append('network', 'devnet');
 data.append('private_key', '3eJHxayX14X6dj9kbkAcC7hWwMFKbZEZUFYeXqz67G6wi5uWMAvyUddTodtRfkpgHQ2W46ZNX5w7PwBkY4MHXd3x');
 data.append('name', name.toString());
 console.log("data name added")
-// data.append('symbol', symbol.toString());
-// data.append('description', desc.toString());
+data.append('symbol', symbol.toString());
+data.append('description', desc.toString());
 // data.append('attributes', attr.toString());
 // data.append('external_url', extUrl);
-// data.append('royalty', royalty.toString());
+data.append('royalty', royalty.toString());
 
 // data.append('name', 'Shyft Founders');
-data.append('symbol', 'SF');
-data.append('description', 'Shyft Founders Bio');
+// data.append('symbol', 'SF');
+// data.append('description', 'Shyft Founders Bio');
+const attrval = 20
 data.append('attributes', '[{"trait_type": "speed", "value": 100},\n{"trait_type": "aggression", "value": "crazy"},\n{"trait_type": "energy", "value": "very high"}]');
+// data.append('attributes', "[{'trait_type': '"+ attr.toString() +"', 'value': "+ attrval.toString() +", {'trait_type': 'aggression', 'value': 'crazy'}, {'trait_type': 'energy', 'value': 'very high'}]");
 data.append('external_url', 'https://shyft.to/');
-data.append('royalty', '10');
+// data.append('royalty', '10');
 
 
 data.append('file', selectedFile);
@@ -119,37 +102,10 @@ await axios(config)
     return () => URL.revokeObjectURL(objectUrl)
 }, [selectedFile])
 
-
-  // const form = useRef();
-
-
-  // // const sendEmail = async(e) => {
-  // //   e.preventDefault();
-  // //   console.log(form.current)
-
-  // //   emailjs.sendForm("service_s22eq14", "template_1ar5q4a", form.current, "Cz55Jg65l961cPNcN")
-  // //     .then((result) => {
-  // //         console.log(result.text);
-  // //     }, (error) => {
-  // //         console.log(error.text);
-  // //     });
-  // // };
-
-  // let state = {
-  //   text: "",
-  // };
-
-  // // typing on RIGHT hand side of =
-  // let onChange = (e: React.FormEvent<HTMLInputElement>): void => {
-  //   this.setState({ text: e.currentTarget.value });
-  // };
-
   const onFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.files[0]);
     setSelectedFile(event.target.files[0]);
-    // if (event.target.files[0]){
-    //   console.log(event.target.files[0]);
-    // }
+
   };
 
     const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -181,21 +137,18 @@ await axios(config)
   };
 
 
-
-
-
-
-
-
   
 
   return (
     <div>
         <div className='bg-[#324265] w-full m-1 py-3 px-2 rounded-md min-h-screen'>
 
-          <div>name: {name}</div>
+          {/* <div>name: {name}</div>
+          <div>Symbol: {symbol}</div>
           <div>description: {desc}</div>
-        {/* <form className='w-full' ref={form} onSubmit={sendEmail}> */}
+          <div>attributes: {attr}</div>
+          <div>royalty: {royalty}</div>
+           */}
         <form className='w-full'>
   <label className="block">
     <span className="block font-medium text-[#ABAEB0] text-xl mb-2">NFT Collection Name</span>
@@ -228,10 +181,6 @@ await axios(config)
     </p>
   </label>
 
-
-
-
-
   <label className="block">
     <span className="block font-medium text-[#ABAEB0] text-xl mb-2">Description</span>
     <textarea onChange={onDescrInputChange} cols={40} rows={5} className='peer w-full bg-inherit outline outline-offset-1 dark:text-white dark:outline-green-400 outline-[#FF6464] outline-2 rounded-md p-4' placeholder='Enter your message'/>
@@ -258,17 +207,17 @@ await axios(config)
     />
   </label>
 
-  {/* <button className="focus:outline-none focus-visible:ring">
-  Submit
-</button> */}
-
-<button className="bg-blue-500 active:bg-blue-600">
-  Submit
-</button>
 </form>
 
 
-<button onClick={displayFile}>hello</button>
+<div className=' grid justify-items-center'>
+<button onClick={displayFile} class="w-1/4 relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-3xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+  <span class="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+      Mint NFT!
+  </span>
+</button>
+</div>
+
 <img src={selectedFile != null ? selectedFile : ""} alt="" />
         </div>
     </div>
