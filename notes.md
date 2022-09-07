@@ -20,3 +20,8 @@ https://blog.logrocket.com/how-to-use-react-context-typescript/
 https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/react/modals/regular
 
 https://hackernoon.com/how-to-build-a-qr-code-generator-in-react
+
+
+
+
+https://docs.candypay.fun/docs/introduction 

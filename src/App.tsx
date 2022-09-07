@@ -20,8 +20,6 @@ export const App: FC = () => {
 
     return (
         <Context>
-            {/* <ContextProvider> */}
-
             <TodoProvider>
             <BrowserRouter>
                 <NavBar />
@@ -30,24 +28,13 @@ export const App: FC = () => {
                         <Routes>
                              <Route path="/" element={<Home />} />
                              <Route path="/mynfts" element={<ManageNFTs2 />} />
-                            <Route path="/wallet" element={<ManageNFTs />} >
-                                {/* <Route name="ideas" path="/:testvalue" handler={Nftpage} /> */}
-                            </Route>
-
-                            {/* <Route path="/" element={<Elections />} /> */}
-                            <Route path="/elections" element={<Elections />} />
-                            <Route path="/vote" element={<Votingpage />} />
                             <Route path="/mintnft" element={<Mintnftpage />} />
-                            <Route path="/update" element={<Updatenftpage />} />
                             <Route path="/nftpage" element={<Nftpage />} />
-                            {/* <Route name="/wallet/ideas" path="/wallet/ideas/:testvalue" handler={Nftpage} /> */}
-                            {/* <Route path="/mintnft2" element={<Mintnftpage2 />} /> */}
                         </Routes>
                     }
                 />
             </BrowserRouter>
             </TodoProvider>
-            {/* </ContextProvider> */}
         </Context>
     );
 };

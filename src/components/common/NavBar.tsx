@@ -95,7 +95,7 @@ const NavBar = () => {
                             <Link
                                         to={link}
                                         onClick={() => setIsNavOpen(false)}
-                                        className=" text-xl font-bold flex items-center lg:ml-2.5 hover:underline hover:scale-110 underline-offset-4 decoration-sky-500 text-white"
+                                        className=" text-xl font-extrabold flex items-center lg:ml-2.5 hover:underline hover:scale-120 underline-offset-4 decoration-sky-500 text-white"
                                     ><p>{title}</p></Link>
                                 
                                 )
