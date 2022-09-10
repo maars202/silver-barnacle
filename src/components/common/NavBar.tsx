@@ -9,8 +9,8 @@ const NavBar = () => {
 
     const links = [
         // {"title": "Personal Info", "link": "/elections"},
-        {"title": "About Us", "link": "/"},
-        {"title": "Marketplace", "link": "/marketplace"},
+        {"title": "Marketplace", "link": "/"},
+        {"title": "About Us", "link": "/marketplace"},
     // {"title": "Elections", "link": "/elections"},
     {"title": "My NFTs", "link": "/mynfts"},
     {"title": "Mint", "link": "/mintnft"},
@@ -44,7 +44,7 @@ const NavBar = () => {
                                 </svg>
                             </div>
                             <ul className="MENU-LINK-MOBILE-OPEN flex flex-col justify-between">
-                                <li className="my-3">
+                                <li className="">
                                     <Link
                                         to="/"
                                         onClick={() => setIsNavOpen(false)}
@@ -63,9 +63,28 @@ const NavBar = () => {
                                         <span className="ml-3">Marketplace</span>
                                     </Link>
                                 </li>
-                                <li className="my-3">
+                                <li className="">
                                     <Link
-                                        to="/wallet"
+                                        to="/marketplace"
+                                        onClick={() => setIsNavOpen(false)}
+                                        className={`text-base font-normal rounded-lg flex items-center p-2 hover:text-gray-900 hover:bg-gray-100 group ${
+                                            location.pathname == '/certificate' ? 'text-sky-400' : 'text-gray-300'
+                                        }`}
+                                    >
+                                        <svg
+                                            className="w-6 h-6 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                                        </svg>
+                                        <span className="ml-3">About us</span>
+                                    </Link>
+                                </li>
+                                {/* <li className="">
+                                    <Link
+                                        to="/mynfts"
                                         onClick={() => setIsNavOpen(false)}
                                         className={`text-base font-normal rounded-lg flex items-center p-2 hover:text-gray-900 hover:bg-gray-100 group ${
                                             location.pathname == '/wallet' ? 'text-sky-400' : 'text-gray-300'
@@ -79,9 +98,48 @@ const NavBar = () => {
                                         >
                                             <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
                                         </svg>
-                                        <span className="ml-3">Manage NFTs</span>
+                                        <span className="ml-3">My NFTs</span>
                                     </Link>
                                 </li>
+                                <li className="">
+                                    <Link
+                                        to="/mintnft"
+                                        onClick={() => setIsNavOpen(false)}
+                                        className={`text-base font-normal rounded-lg flex items-center p-2 hover:text-gray-900 hover:bg-gray-100 group ${
+                                            location.pathname == '/wallet' ? 'text-sky-400' : 'text-gray-300'
+                                        }`}
+                                    >
+                                        <svg
+                                            className="w-6 h-6 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
+                                        </svg>
+                                        <span className="ml-3">Mint NFT</span>
+                                    </Link>
+                                </li>
+
+                                <li className="">
+                                    <Link
+                                        to="/toggle"
+                                        onClick={() => setIsNavOpen(false)}
+                                        className={`text-base font-normal rounded-lg flex items-center p-2 hover:text-gray-900 hover:bg-gray-100 group ${
+                                            location.pathname == '/wallet' ? 'text-sky-400' : 'text-gray-300'
+                                        }`}
+                                    >
+                                        <svg
+                                            className="w-6 h-6 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
+                                        </svg>
+                                        <span className="ml-3">Multimint</span>
+                                    </Link>
+                                </li> */}
                                 <li className="my-3 flex justify-center">
                                     <WalletMultiButton className="!bg-gradient-to-r from-sky-500 via-blue-600 !to-purple-700 hover:from-sky-400 !rounded-lg" />
                                 </li>

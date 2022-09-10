@@ -28,12 +28,12 @@ export const App: FC = () => {
                 <Main
                     childComp={
                         <Routes>
-                             <Route path="/" element={<Aboutpage />} />
+                             <Route path="/" element={<Home />} />
                              <Route path="/mynfts" element={<ManageNFTs2 />} />
                             <Route path="/mintnft" element={<Mintnftpage />} />
                             <Route path="/nftpage" element={<Nftpage />} />
                             <Route path="/toggle" element={<Toggle />} />
-                            <Route path="/marketplace" element={<Home />} />
+                            <Route path="/marketplace" element={<Aboutpage />} />
                             
                         </Routes>
                     }
