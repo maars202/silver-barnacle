@@ -15,6 +15,7 @@ import Nftpage from './pages/Nftpage';
 import Toggle from './pages/Toggle';
 // import { ContextProvider } from './ContextProvider';
 import { TodoProvider } from './ContextProvider';
+import Aboutpage from './pages/Aboutpage';
 
 
 export const App: FC = () => {
@@ -27,11 +28,13 @@ export const App: FC = () => {
                 <Main
                     childComp={
                         <Routes>
-                             <Route path="/" element={<Home />} />
+                             <Route path="/" element={<Aboutpage />} />
                              <Route path="/mynfts" element={<ManageNFTs2 />} />
                             <Route path="/mintnft" element={<Mintnftpage />} />
                             <Route path="/nftpage" element={<Nftpage />} />
                             <Route path="/toggle" element={<Toggle />} />
+                            <Route path="/marketplace" element={<Home />} />
+                            
                         </Routes>
                     }
                 />

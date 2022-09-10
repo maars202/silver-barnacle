@@ -9,7 +9,8 @@ const NavBar = () => {
 
     const links = [
         // {"title": "Personal Info", "link": "/elections"},
-        {"title": "Marketplace", "link": "/"},
+        {"title": "About Us", "link": "/"},
+        {"title": "Marketplace", "link": "/marketplace"},
     // {"title": "Elections", "link": "/elections"},
     {"title": "My NFTs", "link": "/mynfts"},
     {"title": "Mint", "link": "/mintnft"},
