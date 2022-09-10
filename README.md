@@ -30,4 +30,8 @@ This site has been deployed at https://silver-barnacle-theta.vercel.app/.
 
 <p align='center'>
 <img src="public/images/gif4.gif" width="400" height="250"/>
-</p># sturdy-octo-couscous
+</p>
+
+<p align='center'>
+<img src="public/images/gif5.gif" width="400" height="250"/>
+</p>
