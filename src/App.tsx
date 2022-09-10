@@ -12,6 +12,7 @@ import Mintnftpage from './pages/Mintnftpage';
 import Mintnftpage2 from './pages/Mintnftpage2';
 import Updatenftpage from './pages/Updatenftpage';
 import Nftpage from './pages/Nftpage';
+import Toggle from './pages/Toggle';
 // import { ContextProvider } from './ContextProvider';
 import { TodoProvider } from './ContextProvider';
 
@@ -30,6 +31,7 @@ export const App: FC = () => {
                              <Route path="/mynfts" element={<ManageNFTs2 />} />
                             <Route path="/mintnft" element={<Mintnftpage />} />
                             <Route path="/nftpage" element={<Nftpage />} />
+                            <Route path="/toggle" element={<Toggle />} />
                         </Routes>
                     }
                 />

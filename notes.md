@@ -25,3 +25,9 @@ https://hackernoon.com/how-to-build-a-qr-code-generator-in-react
 
 
 https://docs.candypay.fun/docs/introduction 
+
+customer journey visualisation -- using react graphs --- 
+single idea of multistage -- randomly assigned 
+
+
+https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/about/examples.md
