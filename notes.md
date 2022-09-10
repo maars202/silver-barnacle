@@ -31,3 +31,12 @@ single idea of multistage -- randomly assigned
 
 
 https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/about/examples.md
+
+
+
+
+
+https://www.npmjs.com/package/react-aws-s3
+ https://www.npmjs.com/package/react-aws-s3-typescript#upload-a-file-to-aws-s3-bucket
+ https://javascript.plainenglish.io/how-to-upload-files-to-aws-s3-in-react-591e533d615e
+ https://medium.com/dailyjs/a-guide-to-deploying-your-react-app-with-aws-s3-including-https-a-custom-domain-a-cdn-and-58245251f081

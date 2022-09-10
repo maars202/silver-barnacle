@@ -4,8 +4,9 @@ import ReactDOM from "react-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 // fake data generator
-const getItems = (count, offset = 0,) =>
+const getItems = (count, file, offset = 0) =>
   Array.from({ length: count }, (v, k) => k).map(k => ({
+    file: file, 
     id: `item-${k + offset}-${new Date().getTime()}`,
     content: `item ${k + offset}`
   }));
@@ -61,13 +62,16 @@ const getListStyle = isDraggingOver => ({
 
 function Toggle() {
     const inputRef = useRef(null);
-  const [state, setState] = useState([getItems(10), getItems(5, 10)]);
+  // const [state, setState] = useState([getItems(10), getItems(5, 10)]);
+  const [state, setState] = useState([]);
   const [selectedFile, setSelectedFile] = useState<File | null>()
   let list = new DataTransfer();
   const [selectedImages, setSelectedImages] = useState<DataTransfer | null>(list)
+
   const onFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.files[0]);
     setSelectedFile(event.target.files[0]);
+    setState([...state, getItems(1, event.target.files[0])]);
 
     // let selectNew = selectedFile;
     // selectNew.push(event.target.files[0])
@@ -78,9 +82,17 @@ function Toggle() {
 // let file = new File(["content"], "filename.jpg");
 selectedImages?.items.add(event.target.files[0]);
 setSelectedImages(selectedImages);
-console.log("existing selectedImages: ", selectedImages)
+if (selectedImages != undefined){
+  for (let i of selectedImages?.files){
+    console.log("i: ", i.name)
+    // getItems(1, i);
+    setState([...state, getItems(1, i)]);
+  }
+}
+
+console.log("existing selectedImages: ", selectedImages?.files)
 // let myFileList = list.files
-getItems(1)
+// getItems(1, )
 
 
   };
@@ -116,6 +128,10 @@ getItems(1)
   return (
     <div>
 
+      {/* {selectedImages?.files.map((file)=>{
+        return <div>{file.name}</div>
+      })} */}
+
 <span className="block font-medium text-[#ABAEB0] text-sm mb-2">Upload folder with images</span>
   <label className="block">
   
@@ -145,7 +161,7 @@ getItems(1)
       <button
         type="button"
         onClick={() => {
-          setState([...state, getItems(1)]);
+          setState([...state, getItems(1, null)]);
         }}
       >
         Add new item
@@ -176,14 +192,15 @@ getItems(1)
                             provided.draggableProps.style
                           )}
                         >
-                          <div
+                          <div className='flex flex-col'
                             style={{
                               display: "flex",
                               justifyContent: "space-around"
                             }}
                           >
-                            {item.content}
-                            hello
+                            <div className='grid justify-items-center'>{item.file.name}</div>
+                            
+                            <img src={URL.createObjectURL(item.file)}/>
                             <button
                               type="button"
                               onClick={() => {
