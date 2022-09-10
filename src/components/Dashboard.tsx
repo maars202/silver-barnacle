@@ -14,7 +14,7 @@ const Dashboard = (props: Props) => {
 
 
 
-            <div className='w-full '>
+            <div className=''>
 
             <div className='flex flex-row'>
               <div class="flex flex-col md:w-2/3 w-full p-20 bg-cover bg-hero-pattern2 md:bg-none overflow-hidden" >

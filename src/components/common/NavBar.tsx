@@ -82,7 +82,7 @@ const NavBar = () => {
                                         <span className="ml-3">About us</span>
                                     </Link>
                                 </li>
-                                {/* <li className="">
+                                <li className="">
                                     <Link
                                         to="/mynfts"
                                         onClick={() => setIsNavOpen(false)}
@@ -139,7 +139,7 @@ const NavBar = () => {
                                         </svg>
                                         <span className="ml-3">Multimint</span>
                                     </Link>
-                                </li> */}
+                                </li>
                                 <li className="my-3 flex justify-center">
                                     <WalletMultiButton className="!bg-gradient-to-r from-sky-500 via-blue-600 !to-purple-700 hover:from-sky-400 !rounded-lg" />
                                 </li>
@@ -147,9 +147,9 @@ const NavBar = () => {
                         </div>
 
 
-                        <div className=' flex flex-row justify-between w-full md:visible invisible ml-20'>
+                        <div className=' flex flex-row justify-between w-full md:visible invisible'>
 
-                        {links.map((item, idx) => {
+                        {isNavOpen ? "" : links.map((item, idx) => {
                             const { title, link} = item
                             return (
                             <Link
