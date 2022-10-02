@@ -1,7 +1,6 @@
-# animated-octo-winner
-# silver-barnacle
-
 # About
+
+This site has been deployed at https://silver-barnacle-theta.vercel.app/.
 
 As it stands, current Token Gating solutions only serve as one off passes to events and gated digital content, essentially behaving as repurposed physical tickets. How can we leverage on the underlying technology behind NFTs to turn them into loyalty cards which can help brands build stronger connections with their community as well as reward users for their commmitment and loyalty?
 
